@@ -1,4 +1,4 @@
 package ca.cal.tp2.modele;
 
-public class Document {
+public abstract class Document {
 }

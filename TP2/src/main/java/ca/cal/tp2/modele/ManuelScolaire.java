@@ -1,4 +1,4 @@
 package ca.cal.tp2.modele;
 
-public class ManuelScolaire {
+public class ManuelScolaire extends Livre {
 }
