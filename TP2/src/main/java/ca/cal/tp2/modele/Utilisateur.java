@@ -1,9 +1,10 @@
 package ca.cal.tp2.modele;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="user_type", discriminatorType = DiscriminatorType.STRING)
 public abstract class Utilisateur {
 
     @Id
@@ -17,13 +18,18 @@ public abstract class Utilisateur {
     @Column
     private String prenom;
 
-    public Utilisateur() {
+    public Utilisateur() {}
 
-    }
-
-    public Utilisateur(Long id, String nom, String prenom) {
-        this.id = id;
+    public Utilisateur(String nom, String prenom) {
         this.nom = nom;
         this.prenom = prenom;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
     }
 }
