@@ -12,7 +12,7 @@ public class UtilisateurRepositoryJPA implements UtilisateurRepository {
 
     @Override
     public Client saveClient(Client client) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("tp2");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("tp2victoria");
         EntityManager em = emf.createEntityManager();
 
         em.getTransaction().begin();
@@ -21,6 +21,7 @@ public class UtilisateurRepositoryJPA implements UtilisateurRepository {
         query.setParameter(1, client.getNom());
         query.setParameter(2, client.getPrenom());
 
+        em.persist(client);
         em.getTransaction().commit();
         em.close();
 
