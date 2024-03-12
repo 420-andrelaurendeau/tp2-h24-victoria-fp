@@ -23,9 +23,9 @@ public class LivreService {
 
     private LivreDTO toDTO(Livre livre) {
         LivreDTO livreDTO = new LivreDTO(
-                livre.getIdLivre;
-                livre.getTitre;
-                livre.getAuteur;
+                livre.getIdLivre(),
+                livre.getTitre(),
+                livre.getAuteur()
         );
         return livreDTO;
     }
