@@ -8,9 +8,9 @@ import jakarta.persistence.*;
 public abstract class Utilisateur {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private Long id;
+    private Long idUser;
 
     @Column
     private String nom;
@@ -25,8 +25,8 @@ public abstract class Utilisateur {
         this.prenom = prenom;
     }
 
-    public Long getId() {
-        return id;
+    public Long getIdUser() {
+        return idUser;
     }
 
     public String getNom() {

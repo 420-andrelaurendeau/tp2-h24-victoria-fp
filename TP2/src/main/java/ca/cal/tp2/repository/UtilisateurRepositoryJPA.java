@@ -11,15 +11,16 @@ public class UtilisateurRepositoryJPA implements UtilisateurRepository {
     }
 
     @Override
-    public Client saveClient(Client client) {
+    public Client saveClient(String nom, String prenom) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("tp2victoria");
         EntityManager em = emf.createEntityManager();
 
         em.getTransaction().begin();
 
-        final Query query = em.createNativeQuery("insert into Utilisateur (nom, prenom) VALUES(?, ?)", Utilisateur.class);
-        query.setParameter(1, client.getNom());
-        query.setParameter(2, client.getPrenom());
+        final Query query = em.createNativeQuery("select prenom, nom from Client where nom=?");
+        query.setParameter(1, nom);
+
+        Client client = new Client(nom, prenom);
 
         em.persist(client);
         em.getTransaction().commit();

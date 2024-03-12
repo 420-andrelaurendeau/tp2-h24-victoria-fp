@@ -1,11 +1,20 @@
 package ca.cal.tp2.modele;
 
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @DiscriminatorValue("client")
 public class Client extends Utilisateur {
+
+    /*@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
+    private Long idClient;*/
+
+    /*@OneToMany(mappedBy = "client")
+    private List<Emprunt> emprunts;*/
 
     public Client() {}
 
@@ -13,9 +22,13 @@ public class Client extends Utilisateur {
         super(nom, prenom);
     }
 
+    /*public Long getIdClient() {
+        return idClient;
+    }*/
+
     @Override
-    public Long getId() {
-        return super.getId();
+    public Long getIdUser() {
+        return super.getIdUser();
     }
 
     @Override

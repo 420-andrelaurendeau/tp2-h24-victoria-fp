@@ -16,14 +16,14 @@ public class ClientService {
         if (nom.isEmpty() || prenom.isEmpty())
             throw new IllegalArgumentException("Le nom et le prénom ne peuvent pas être vides");
 
-        Client client = new Client(nom, prenom);
-        utilisateurRepository.saveClient(client);
+        Client client = utilisateurRepository.saveClient(nom, prenom);
         return toDTO(client);
     }
 
     private ClientDTO toDTO(Client client) {
         ClientDTO clientDTO = new ClientDTO(
-                client.getId(),
+                //client.getIdClient(),
+                client.getIdUser(),
                 client.getNom(),
                 client.getPrenom()
         );
