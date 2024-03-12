@@ -1,4 +1,3 @@
 package ca.cal.tp2.service;
 
-public class LivreDTO {
-}
+public record LivreDTO(Long idLivre, String titre, String auteur) {}
