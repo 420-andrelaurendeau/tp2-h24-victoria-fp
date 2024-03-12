@@ -13,8 +13,9 @@ public class Client extends Utilisateur {
     @Column
     private Long idClient;*/
 
-    /*@OneToMany(mappedBy = "client")
-    private List<Emprunt> emprunts;*/
+    @OneToMany(mappedBy = "emprunts")
+    @CollectionTable
+    private List<Emprunt> emprunts;
 
     public Client() {}
 
