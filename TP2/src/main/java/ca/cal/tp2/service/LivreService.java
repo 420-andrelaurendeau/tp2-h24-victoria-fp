@@ -20,4 +20,13 @@ public class LivreService {
         Livre livre = documentRepository.saveLivre(titre, auteur);
         return toDTO(livre);
     }
+
+    private LivreDTO toDTO(Livre livre) {
+        LivreDTO livreDTO = new LivreDTO(
+                livre.getIdLivre;
+                livre.getTitre;
+                livre.getAuteur;
+        );
+        return livreDTO;
+    }
 }
