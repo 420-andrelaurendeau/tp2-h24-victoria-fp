@@ -1,4 +1,3 @@
 package ca.cal.tp2.service;
 
-public class ClientDTO {
-}
+public record ClientDTO(Long id, String nom, String prenom) { }

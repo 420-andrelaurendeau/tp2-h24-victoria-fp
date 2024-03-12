@@ -21,5 +21,12 @@ public class ClientService {
         return toDTO(client);
     }
 
-
+    private ClientDTO toDTO(Client client) {
+        ClientDTO clientDTO = new ClientDTO(
+                client.getId(),
+                client.getNom(),
+                client.getPrenom()
+        );
+        return clientDTO;
+    }
 }

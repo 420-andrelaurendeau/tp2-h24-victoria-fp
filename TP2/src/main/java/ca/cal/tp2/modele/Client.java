@@ -14,6 +14,11 @@ public class Client extends Utilisateur {
     }
 
     @Override
+    public Long getId() {
+        return super.getId();
+    }
+
+    @Override
     public String getNom() {
         return super.getNom();
     }

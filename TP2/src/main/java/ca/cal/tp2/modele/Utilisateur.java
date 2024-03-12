@@ -25,6 +25,10 @@ public abstract class Utilisateur {
         this.prenom = prenom;
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public String getNom() {
         return nom;
     }
