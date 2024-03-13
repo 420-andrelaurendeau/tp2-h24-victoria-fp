@@ -11,21 +11,22 @@ public class LivreService {
         this.documentRepository = documentRepository;
     }
 
-    public LivreDTO createLivre(String titre, String auteur) {
+    public LivreDTO createLivre(String titre, String auteur, int nbPages) {
         if (titre == null || auteur == null)
             throw new NullPointerException("Les paramètres entrés ne peuvent pas être null");
         if (titre.isEmpty() || auteur.isEmpty())
             throw new IllegalArgumentException("Le titre et l'auteur' ne peuvent pas être vides");
 
-        Livre livre = documentRepository.saveLivre(titre, auteur);
+        Livre livre = documentRepository.saveLivre(titre, auteur, nbPages);
         return toDTO(livre);
     }
 
     private LivreDTO toDTO(Livre livre) {
         LivreDTO livreDTO = new LivreDTO(
-                livre.getIdLivre(),
+                livre.getIdDocument(),
                 livre.getTitre(),
-                livre.getAuteur()
+                livre.getAuteur(),
+                livre.getNbPages()
         );
         return livreDTO;
     }
