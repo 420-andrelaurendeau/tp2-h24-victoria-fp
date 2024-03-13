@@ -14,11 +14,11 @@ public class EmpruntService {
         this.empruntRepository = empruntRepository;
     }
 
-    public EmpruntDTO saveEmprunt(List<EmpruntDocument> empruntDocuments) {
+    public EmpruntDTO createEmprunt(List<EmpruntDocument> empruntDocuments) {
         if (empruntDocuments == null)
             throw new NullPointerException("La liste d'emprunt de documents ne peut pas être nulle");
 
-        Emprunt emprunt = empruntRepository.saveEmprunt();
-        return null;
+        Emprunt emprunt = empruntRepository.saveEmprunt(empruntDocuments);
+        return toDTO(emprunt);
     }
 }
