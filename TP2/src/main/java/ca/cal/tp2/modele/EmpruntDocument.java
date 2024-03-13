@@ -9,7 +9,7 @@ public class EmpruntDocument {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private Long id;
+    private Long idEmpruntDocument;
 
     @ManyToOne
     @JoinColumn(name = "id_document")

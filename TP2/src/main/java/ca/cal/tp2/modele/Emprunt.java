@@ -13,11 +13,7 @@ public class Emprunt {
     @Column
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "id_client")
-    private Client client;
-
-    @OneToMany(mappedBy = "empruntDocument")
+    @OneToMany(mappedBy = "idEmpruntDocument")
     private List<EmpruntDocument> empruntDocuments;
 
     public Emprunt() {
