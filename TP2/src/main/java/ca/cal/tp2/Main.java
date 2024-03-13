@@ -1,9 +1,12 @@
 package ca.cal.tp2;
 
 import ca.cal.tp2.modele.Client;
+import ca.cal.tp2.repository.DocumentRepositoryJPA;
 import ca.cal.tp2.repository.UtilisateurRepositoryJPA;
 import ca.cal.tp2.service.ClientDTO;
 import ca.cal.tp2.service.ClientService;
+import ca.cal.tp2.service.LivreDTO;
+import ca.cal.tp2.service.LivreService;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -21,6 +24,11 @@ public class Main {
         // Création d'un Client -------------------------------
         ClientService clientService = new ClientService(new UtilisateurRepositoryJPA());
         ClientDTO clientDTO = clientService.createClient("Doe","John");
+        // ----------------------------------------------------
+
+        // Création d'un Livre --------------------------------
+        LivreService livreService = new LivreService(new DocumentRepositoryJPA());
+        LivreDTO livreDTO = livreService.createLivre("Le passager", "Patrick Sénécal", 214);
         // ----------------------------------------------------
 
         em.getTransaction().commit();
