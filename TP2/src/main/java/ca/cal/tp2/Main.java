@@ -1,6 +1,5 @@
 package ca.cal.tp2;
 
-import ca.cal.tp2.modele.Client;
 import ca.cal.tp2.repository.DocumentRepositoryJPA;
 import ca.cal.tp2.repository.UtilisateurRepositoryJPA;
 import ca.cal.tp2.service.ClientDTO;
