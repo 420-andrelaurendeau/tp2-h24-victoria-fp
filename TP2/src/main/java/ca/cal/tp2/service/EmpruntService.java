@@ -18,7 +18,7 @@ public class EmpruntService {
         if (empruntDocuments == null)
             throw new NullPointerException("La liste d'emprunt de documents ne peut pas être nulle");
 
-        //Emprunt emprunt = empruntRepository.saveEmprunt();
+        Emprunt emprunt = empruntRepository.saveEmprunt();
         return null;
     }
 }
