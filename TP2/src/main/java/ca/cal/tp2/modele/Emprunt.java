@@ -20,11 +20,23 @@ public class Emprunt {
 
     }
 
+    public Emprunt(List<EmpruntDocument> empruntDocuments) {
+        this.empruntDocuments = empruntDocuments;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
 
     public Long getId() {
         return id;
+    }
+
+    public List<EmpruntDocument> getEmpruntDocuments() {
+        return empruntDocuments;
+    }
+
+    public void setEmpruntDocuments(List<EmpruntDocument> empruntDocuments) {
+        this.empruntDocuments = empruntDocuments;
     }
 }

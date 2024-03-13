@@ -14,7 +14,6 @@ public class Client extends Utilisateur {
     private Long idClient;*/
 
     @OneToMany(mappedBy = "emprunts")
-    @CollectionTable
     private List<Emprunt> emprunts;
 
     public Client() {}
@@ -40,5 +39,13 @@ public class Client extends Utilisateur {
     @Override
     public String getPrenom() {
         return super.getPrenom();
+    }
+
+    public List<Emprunt> getEmprunts() {
+        return emprunts;
+    }
+
+    public void setEmprunts(List<Emprunt> emprunts) {
+        this.emprunts = emprunts;
     }
 }
