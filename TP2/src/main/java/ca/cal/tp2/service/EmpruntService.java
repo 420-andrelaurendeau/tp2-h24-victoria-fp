@@ -21,4 +21,12 @@ public class EmpruntService {
         Emprunt emprunt = empruntRepository.saveEmprunt(empruntDocuments);
         return toDTO(emprunt);
     }
+
+    private EmpruntDTO toDTO(Emprunt emprunt) {
+        EmpruntDTO empruntDTO = new EmpruntDTO(
+                emprunt.getIdEmprunt(),
+                emprunt.getEmpruntDocuments()
+        );
+        return empruntDTO;
+    }
 }
