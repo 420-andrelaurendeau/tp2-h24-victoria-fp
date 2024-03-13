@@ -26,7 +26,7 @@ public class Main {
         ClientDTO clientDTO = clientService.createClient("Doe","John");
         // ----------------------------------------------------
 
-        // Création d'un Livre --------------------------------
+        // Création d'un Livre et d'un Emprunt --------------------------------
         LivreService livreService = new LivreService(new DocumentRepositoryJPA());
         LivreDTO livreDTO = livreService.createLivre("Le passager", "Patrick Sénécal", 214);
         // ----------------------------------------------------
