@@ -11,9 +11,9 @@ public class Emprunt {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private Long id;
+    private Long idEmprunt;
 
-    @OneToMany(mappedBy = "idEmpruntDocument")
+    @OneToMany
     private List<EmpruntDocument> empruntDocuments;
 
     public Emprunt() {
@@ -24,12 +24,12 @@ public class Emprunt {
         this.empruntDocuments = empruntDocuments;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdEmprunt(Long idEmprunt) {
+        this.idEmprunt = idEmprunt;
     }
 
-    public Long getId() {
-        return id;
+    public Long getIdEmprunt() {
+        return idEmprunt;
     }
 
     public List<EmpruntDocument> getEmpruntDocuments() {

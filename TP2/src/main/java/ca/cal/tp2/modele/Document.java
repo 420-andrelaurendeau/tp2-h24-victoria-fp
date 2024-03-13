@@ -2,6 +2,8 @@ package ca.cal.tp2.modele;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public abstract class Document {
 

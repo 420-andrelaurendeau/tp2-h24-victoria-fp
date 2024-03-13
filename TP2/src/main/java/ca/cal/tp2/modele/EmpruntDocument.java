@@ -14,7 +14,7 @@ public class EmpruntDocument {
     private Long idEmpruntDocument;
 
     @ManyToOne
-    @JoinColumn(name = "id_document")
+    @JoinColumn(name = "idDocument")
     private Document document;
 
     @Column
@@ -36,7 +36,7 @@ public class EmpruntDocument {
     }
 
     public Document getDocument() {
-        return document;
+        return this.document;
     }
 
     public void setDocument(Document document) {

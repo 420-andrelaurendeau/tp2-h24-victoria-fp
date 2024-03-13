@@ -8,12 +8,7 @@ import java.util.List;
 @DiscriminatorValue("client")
 public class Client extends Utilisateur {
 
-    /*@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
-    private Long idClient;*/
-
-    @OneToMany(mappedBy = "emprunts")
+    @OneToMany
     private List<Emprunt> emprunts;
 
     public Client() {}
@@ -21,10 +16,6 @@ public class Client extends Utilisateur {
     public Client(String nom, String prenom) {
         super(nom, prenom);
     }
-
-    /*public Long getIdClient() {
-        return idClient;
-    }*/
 
     @Override
     public Long getIdUser() {
