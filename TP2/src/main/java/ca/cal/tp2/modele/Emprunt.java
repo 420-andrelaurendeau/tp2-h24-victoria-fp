@@ -2,6 +2,7 @@ package ca.cal.tp2.modele;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,14 +18,16 @@ public class Emprunt {
     @OneToMany(mappedBy = "emprunt", cascade = CascadeType.ALL)
     private List<EmpruntDocument> empruntDocuments = new ArrayList<>();
 
-    // TODO: ajouter dateEmprunt
+    @Column
+    private LocalDate dateEmprunt;
 
     public Emprunt() {
 
     }
 
-    public Emprunt(List<EmpruntDocument> empruntDocuments) {
+    public Emprunt(List<EmpruntDocument> empruntDocuments, LocalDate dateEmprunt) {
         this.empruntDocuments = empruntDocuments;
+        this.dateEmprunt = dateEmprunt;
     }
 
     public void setIdEmprunt(Long idEmprunt) {
@@ -41,5 +44,13 @@ public class Emprunt {
 
     public void setEmpruntDocuments(List<EmpruntDocument> empruntDocuments) {
         this.empruntDocuments = empruntDocuments;
+    }
+
+    public LocalDate getDateEmprunt() {
+        return dateEmprunt;
+    }
+
+    public void setDateEmprunt(LocalDate dateEmprunt) {
+        this.dateEmprunt = dateEmprunt;
     }
 }

@@ -17,7 +17,7 @@ public class EmpruntRepositoryJPA implements EmpruntRepository {
     public EmpruntRepositoryJPA() {}
 
     @Override
-    public Emprunt saveEmprunt(List<EmpruntDocument> empruntDocuments) {
+    public Emprunt saveEmprunt(List<EmpruntDocument> empruntDocuments, LocalDate dateEmprunt) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("tp2victoria");
         EntityManager em = emf.createEntityManager();
 
@@ -26,7 +26,7 @@ public class EmpruntRepositoryJPA implements EmpruntRepository {
         final Query query = em.createNativeQuery("select * from Emprunt where empruntDocuments=?");
         query.setParameter(1, empruntDocuments);
 
-        Emprunt emprunt = new Emprunt(empruntDocuments);
+        Emprunt emprunt = new Emprunt(empruntDocuments, dateEmprunt);
 
         em.persist(emprunt);
         em.getTransaction().commit();

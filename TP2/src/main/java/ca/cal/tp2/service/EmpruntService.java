@@ -22,11 +22,11 @@ public class EmpruntService {
         this.documentRepository = documentRepository;
     }
 
-    public EmpruntDTO createEmprunt(List<EmpruntDocument> empruntDocuments) {
+    public EmpruntDTO createEmprunt(List<EmpruntDocument> empruntDocuments, LocalDate dateEmprunt) {
         if (empruntDocuments == null)
             throw new NullPointerException("La liste d'emprunt de documents ne peut pas être nulle");
 
-        Emprunt emprunt = empruntRepository.saveEmprunt(empruntDocuments);
+        Emprunt emprunt = empruntRepository.saveEmprunt(empruntDocuments, dateEmprunt);
         return empruntToDTO(emprunt);
     }
 
@@ -35,7 +35,6 @@ public class EmpruntService {
             throw new NullPointerException("Les paramètres entrés ne peuvent pas être null");
 
         int exemplairesRestants = documentRepository.getNbExemplairesRestants(livreDTO.idDocument());
-
         if (exemplairesRestants == 0)
             throw new NullPointerException("Aucun exemplaire restant pour " + livreDTO.titre());
 
@@ -54,7 +53,8 @@ public class EmpruntService {
     private EmpruntDTO empruntToDTO(Emprunt emprunt) {
         EmpruntDTO empruntDTO = new EmpruntDTO(
                 emprunt.getIdEmprunt(),
-                emprunt.getEmpruntDocuments()
+                emprunt.getEmpruntDocuments(),
+                emprunt.getDateEmprunt()
         );
         return empruntDTO;
     }

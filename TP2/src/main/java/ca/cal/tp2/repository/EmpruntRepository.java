@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface EmpruntRepository {
 
-    Emprunt saveEmprunt(List<EmpruntDocument> empruntDocuments);
+    Emprunt saveEmprunt(List<EmpruntDocument> empruntDocuments, LocalDate dateEmprunt);
 
     Emprunt findEmpruntById(Long idEmprunt);
 
