@@ -20,14 +20,16 @@ public class Main {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
 
+
         // Création d'un Client -------------------------------
         ClientService clientService = new ClientService(new UtilisateurRepositoryJPA());
-        ClientDTO clientDTO = clientService.createClient("Doe","John");
+        ClientDTO client1 = clientService.createClient("Doe","John");
         // ----------------------------------------------------
 
-        // Création d'un Livre et d'un Emprunt --------------------------------
+
+        // Création de deux Livres  --------------------------------
         LivreService livreService = new LivreService(new DocumentRepositoryJPA());
-        LivreDTO livreDTO = livreService.createLivre(
+        LivreDTO livre1 = livreService.createLivre(
                 "Le passager",
                 "Patrick Sénécal",
                 "Horreur",
@@ -35,7 +37,37 @@ public class Main {
                 50,
                 214
         );
+
+        LivreDTO livre2 = livreService.createLivre(
+                "Un titre",
+                "Auteur Quelconque",
+                "Categorie",
+                2000,
+                0,
+                500
+        );
+
+        System.out.println("livre1");
+        System.out.println("ID : " + livre1.idDocument());
+        System.out.println("Titre : " + livre1.titre());
+        System.out.println("Auteur : " + livre1.auteur());
+        System.out.println("Catégorie : " + livre1.categorie());
+        System.out.println("Année : " + livre1.annee());
+        System.out.println("Nombre d'exemplaires : " + livre1.nbExemplairesRestants());
+        System.out.println("Nombre de pages : " + livre1.nbPages());
+        System.out.println("---------------------------------");
+
+        System.out.println("livre2");
+        System.out.println("ID : " + livre2.idDocument());
+        System.out.println("Titre : " + livre2.titre());
+        System.out.println("Auteur : " + livre2.auteur());
+        System.out.println("Catégorie : " + livre2.categorie());
+        System.out.println("Année : " + livre2.annee());
+        System.out.println("Nombre d'exemplaires : " + livre2.nbExemplairesRestants());
+        System.out.println("Nombre de pages : " + livre2.nbPages());
+        System.out.println("---------------------------------");
         // ----------------------------------------------------
+
 
         em.getTransaction().commit();
         em.close();
