@@ -3,7 +3,6 @@ package ca.cal.tp2.repository;
 import ca.cal.tp2.modele.Document;
 import ca.cal.tp2.modele.Emprunt;
 import ca.cal.tp2.modele.EmpruntDocument;
-import ca.cal.tp2.modele.Livre;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -23,12 +22,9 @@ public class EmpruntRepositoryJPA implements EmpruntRepository {
 
         em.getTransaction().begin();
 
-        final Query query = em.createNativeQuery("select * from Emprunt where empruntDocuments=?");
-        query.setParameter(1, empruntDocuments);
-
         Emprunt emprunt = new Emprunt(empruntDocuments, dateEmprunt);
-
         em.persist(emprunt);
+
         em.getTransaction().commit();
         em.close();
 
@@ -59,17 +55,9 @@ public class EmpruntRepositoryJPA implements EmpruntRepository {
 
         em.getTransaction().begin();
 
-        final Query query = em.createNativeQuery(
-                "select empruntDocument from EmpruntDocument where emprunt=? " +
-                        "AND document=? AND dateRetourEmprunt=?"
-        );
-        query.setParameter(1, emprunt);
-        query.setParameter(2, document);
-        query.setParameter(3, dateRetourEmprunt);
-
         EmpruntDocument empruntDocument = new EmpruntDocument(emprunt, document, dateRetourEmprunt);
-
         em.persist(empruntDocument);
+
         em.getTransaction().commit();
         em.close();
 

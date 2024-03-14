@@ -17,12 +17,9 @@ public class UtilisateurRepositoryJPA implements UtilisateurRepository {
 
         em.getTransaction().begin();
 
-        final Query query = em.createNativeQuery("select prenom, nom from Client where nom=?");
-        query.setParameter(1, nom);
-
         Client client = new Client(nom, prenom);
-
         em.persist(client);
+
         em.getTransaction().commit();
         em.close();
 

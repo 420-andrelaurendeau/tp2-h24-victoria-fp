@@ -19,12 +19,9 @@ public class DocumentRepositoryJPA implements DocumentRepository {
 
         em.getTransaction().begin();
 
-        final Query query = em.createNativeQuery("select * from Document where auteur=?");
-        query.setParameter(1, titre);
-
         Livre livre = new Livre(titre, auteur, categorie, annee, nbExemplairesRestants, nbPages);
-
         em.persist(livre);
+
         em.getTransaction().commit();
         em.close();
 
