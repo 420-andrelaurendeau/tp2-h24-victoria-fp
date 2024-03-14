@@ -44,6 +44,7 @@ public class DocumentRepositoryJPA implements DocumentRepository {
         em.close();
     }
 
+
     @Override
     public Livre findLivreByTitle(String titre) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("tp2victoria");
@@ -81,6 +82,7 @@ public class DocumentRepositoryJPA implements DocumentRepository {
 
         return livreTrouve;
     }
+
 
     @Override
     public int getNbExemplairesRestants(Long id) {
