@@ -17,6 +17,8 @@ public class Emprunt {
     @OneToMany(mappedBy = "emprunt", cascade = CascadeType.ALL)
     private List<EmpruntDocument> empruntDocuments = new ArrayList<>();
 
+    // TODO: ajouter dateEmprunt
+
     public Emprunt() {
 
     }

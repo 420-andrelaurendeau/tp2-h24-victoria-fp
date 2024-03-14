@@ -62,4 +62,25 @@ public class DocumentRepositoryJPA implements DocumentRepository {
         em.getTransaction().commit();
         em.close();
     }
+
+    @Override
+    public int getNbExemplairesRestants(Long id) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("tp2victoria");
+        EntityManager em = emf.createEntityManager();
+
+        em.getTransaction().begin();
+
+        final Query query = em.createNativeQuery(
+                "select nbExemplairesRestants from Document where idDocument = ?"
+        );
+        query.setParameter(1, id);
+
+        List<Integer> resultatQuery = query.getResultList();
+        int nbExemplairesRestantsTrouve = resultatQuery.getFirst();
+
+        em.getTransaction().commit();
+        em.close();
+
+        return nbExemplairesRestantsTrouve;
+    }
 }

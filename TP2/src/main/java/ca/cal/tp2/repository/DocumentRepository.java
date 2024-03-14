@@ -9,4 +9,6 @@ public interface DocumentRepository {
     Livre findLivreByTitle(String titre);
 
     void updateLivre(Livre livre);
+
+    int getNbExemplairesRestants(Long id);
 }
