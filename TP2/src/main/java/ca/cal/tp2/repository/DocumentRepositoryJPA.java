@@ -83,6 +83,24 @@ public class DocumentRepositoryJPA implements DocumentRepository {
         return livreTrouve;
     }
 
+    @Override
+    public Livre findLivreByCategorie(String categorie) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("tp2victoria");
+        EntityManager em = emf.createEntityManager();
+
+        em.getTransaction().begin();
+
+        final Query query = em.createNativeQuery("select livre from Document where categorie = ?");
+        query.setParameter(1, categorie);
+
+        List<Livre> resultatQuery = query.getResultList();
+        Livre livreTrouve = resultatQuery.getFirst();
+
+        em.getTransaction().commit();
+        em.close();
+
+        return livreTrouve;
+    }
 
     @Override
     public int getNbExemplairesRestants(Long id) {
