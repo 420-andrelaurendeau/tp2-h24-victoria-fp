@@ -6,6 +6,8 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.Query;
 
+import java.util.List;
+
 public class DocumentRepositoryJPA implements DocumentRepository {
 
     public DocumentRepositoryJPA() {}
@@ -27,5 +29,24 @@ public class DocumentRepositoryJPA implements DocumentRepository {
         em.close();
 
         return livre;
+    }
+
+    @Override
+    public Livre findLivreByTitle(String titre) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("tp2victoria");
+        EntityManager em = emf.createEntityManager();
+
+        em.getTransaction().begin();
+
+        final Query query = em.createNativeQuery("select livre from Document where titre=?");
+        query.setParameter(1, titre);
+
+        List<Livre> resultatQuery = query.getResultList();
+        Livre livreTrouve = resultatQuery.getFirst();
+
+        em.getTransaction().commit();
+        em.close();
+
+        return livreTrouve;
     }
 }

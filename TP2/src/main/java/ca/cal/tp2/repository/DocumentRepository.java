@@ -4,5 +4,7 @@ import ca.cal.tp2.modele.Livre;
 
 public interface DocumentRepository {
 
-    public Livre saveLivre(String titre, String auteur, int nbPages);
+    Livre saveLivre(String titre, String auteur, int nbPages);
+
+    Livre findLivreByTitle(String titre);
 }
