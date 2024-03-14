@@ -14,7 +14,7 @@ public interface DocumentRepository {
 
     Livre findLivreByCategorie(String categorie);
 
-    Livre findLivreByTitle(int annee);
+    Livre findLivreByAnnee(int annee);
 
     int getNbExemplairesRestants(Long id);
 }
