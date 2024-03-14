@@ -1,6 +1,8 @@
 package ca.cal.tp2.modele;
 
 import jakarta.persistence.*;
+
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -21,11 +23,12 @@ public class EmpruntDocument {
     private Emprunt emprunt;
 
     @Column
-    private Date dateRetour;
+    private LocalDate dateRetour;
 
     public EmpruntDocument() {}
 
-    public EmpruntDocument(Document document, Date dateRetour) {
+    public EmpruntDocument(Emprunt emprunt, Document document, LocalDate dateRetour) {
+        this.emprunt = emprunt;
         this.document = document;
         this.dateRetour = dateRetour;
     }
@@ -38,6 +41,14 @@ public class EmpruntDocument {
         this.idEmpruntDocument = idEmpruntDocument;
     }
 
+    public Emprunt getEmprunt() {
+        return emprunt;
+    }
+
+    public void setEmprunt(Emprunt emprunt) {
+        this.emprunt = emprunt;
+    }
+
     public Document getDocument() {
         return this.document;
     }
@@ -46,11 +57,11 @@ public class EmpruntDocument {
         this.document = document;
     }
 
-    public Date getDateRetour() {
+    public LocalDate getDateRetour() {
         return dateRetour;
     }
 
-    public void setDateRetour(Date dateRetour) {
+    public void setDateRetour(LocalDate dateRetour) {
         this.dateRetour = dateRetour;
     }
 }
