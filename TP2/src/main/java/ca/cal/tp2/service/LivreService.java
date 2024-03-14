@@ -45,6 +45,14 @@ public class LivreService {
         return toDTO(livre);
     }
 
+    public LivreDTO findLivreByAnnee(int annee) {
+        if (annee < 0 || annee > 2024)
+            throw new IndexOutOfBoundsException("Entrez une année valide");
+
+        Livre livre = documentRepository.findLivreByAnnee(annee);
+        return toDTO(livre);
+    }
+
     private LivreDTO toDTO(Livre livre) {
         LivreDTO livreDTO = new LivreDTO(
                 livre.getIdDocument(),
