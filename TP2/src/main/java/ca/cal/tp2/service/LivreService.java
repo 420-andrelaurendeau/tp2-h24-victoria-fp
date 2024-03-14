@@ -37,6 +37,14 @@ public class LivreService {
         return toDTO(livre);
     }
 
+    public LivreDTO findLivreByCategorie(String categorie) {
+        if (categorie == null || categorie.isEmpty())
+            throw new NullPointerException("Le nom de la catégorie ne peut pas être null ni vide");
+
+        Livre livre = documentRepository.findLivreByAuteur(categorie);
+        return toDTO(livre);
+    }
+
     private LivreDTO toDTO(Livre livre) {
         LivreDTO livreDTO = new LivreDTO(
                 livre.getIdDocument(),
