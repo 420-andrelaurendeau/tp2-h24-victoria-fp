@@ -38,7 +38,7 @@ public class DocumentRepositoryJPA implements DocumentRepository {
 
         em.getTransaction().begin();
 
-        final Query query = em.createNativeQuery("select livre from Document where titre=?");
+        final Query query = em.createNativeQuery("select livre from Document where titre like ?");
         query.setParameter(1, titre);
 
         List<Livre> resultatQuery = query.getResultList();
