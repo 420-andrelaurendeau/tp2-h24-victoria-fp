@@ -13,8 +13,8 @@ public class Livre extends Document {
 
     public Livre() {}
 
-    public Livre(String titre, String auteur, int nbExemplairesRestants, int nbPages) {
-        super(titre, auteur, nbExemplairesRestants);
+    public Livre(String titre, String auteur, String categorie, int annee, int nbExemplairesRestants, int nbPages) {
+        super(titre, auteur, categorie, annee, nbExemplairesRestants);
         this.nbPages = nbPages;
     }
 
@@ -32,6 +32,8 @@ public class Livre extends Document {
     public String getAuteur() {
         return super.getAuteur();
     }
+
+
 
     @Override
     public int getNbExemplairesRestants() {

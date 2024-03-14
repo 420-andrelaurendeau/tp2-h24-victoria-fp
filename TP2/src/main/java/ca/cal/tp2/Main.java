@@ -30,6 +30,8 @@ public class Main {
         LivreDTO livreDTO = livreService.createLivre(
                 "Le passager",
                 "Patrick Sénécal",
+                "Horreur",
+                1991,
                 50,
                 214
         );

@@ -11,13 +11,13 @@ public class LivreService {
         this.documentRepository = documentRepository;
     }
 
-    public LivreDTO createLivre(String titre, String auteur, int nbExemplairesRestants, int nbPages) {
+    public LivreDTO createLivre(String titre, String auteur, String categorie, int annee, int nbExemplairesRestants, int nbPages) {
         if (titre == null || auteur == null)
             throw new NullPointerException("Les paramètres entrés ne peuvent pas être null");
         if (titre.isEmpty() || auteur.isEmpty())
             throw new IllegalArgumentException("Le titre et l'auteur' ne peuvent pas être vides");
 
-        Livre livre = documentRepository.saveLivre(titre, auteur, nbExemplairesRestants, nbPages);
+        Livre livre = documentRepository.saveLivre(titre, auteur, categorie, annee, nbExemplairesRestants, nbPages);
         return toDTO(livre);
     }
 
@@ -58,6 +58,8 @@ public class LivreService {
                 livre.getIdDocument(),
                 livre.getTitre(),
                 livre.getAuteur(),
+                livre.getCategorie(),
+                livre.getAnnee(),
                 livre.getNbExemplairesRestants(),
                 livre.getNbPages()
         );

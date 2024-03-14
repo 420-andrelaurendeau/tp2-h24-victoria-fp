@@ -4,7 +4,7 @@ import ca.cal.tp2.modele.Livre;
 
 public interface DocumentRepository {
 
-    Livre saveLivre(String titre, String auteur, int nbExemplairesRestant, int nbPages);
+    Livre saveLivre(String titre, String auteur, String categorie, int annee, int nbExemplairesRestants, int nbPages);
 
     void updateLivre(Livre livre);
 

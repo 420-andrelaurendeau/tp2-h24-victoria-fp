@@ -18,13 +18,23 @@ public abstract class Document {
     private String auteur;
 
     @Column
+    private String categorie;
+
+    @Column
+    private int annee;
+
+    @Column
     private int nbExemplairesRestants;
+
+
 
     public Document() {}
 
-    public Document(String titre, String auteur, int nbExemplairesRestants) {
+    public Document(String titre, String auteur, String categorie, int annee, int nbExemplairesRestants) {
         this.titre = titre;
         this.auteur = auteur;
+        this.categorie = categorie;
+        this.annee = annee;
         this.nbExemplairesRestants = nbExemplairesRestants;
     }
 
@@ -38,6 +48,22 @@ public abstract class Document {
 
     public String getAuteur() {
         return this.auteur;
+    }
+
+    public String getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(String categorie) {
+        this.categorie = categorie;
+    }
+
+    public int getAnnee() {
+        return annee;
+    }
+
+    public void setAnnee(int annee) {
+        this.annee = annee;
     }
 
     public int getNbExemplairesRestants() {
