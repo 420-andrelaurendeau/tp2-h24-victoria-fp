@@ -8,4 +8,6 @@ import java.util.List;
 public interface EmpruntRepository {
 
     Emprunt saveEmprunt(List<EmpruntDocument> empruntDocuments);
+
+    Emprunt findEmpruntById(Long idEmprunt);
 }

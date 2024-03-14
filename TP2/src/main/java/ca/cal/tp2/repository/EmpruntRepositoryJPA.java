@@ -2,6 +2,7 @@ package ca.cal.tp2.repository;
 
 import ca.cal.tp2.modele.Emprunt;
 import ca.cal.tp2.modele.EmpruntDocument;
+import ca.cal.tp2.modele.Livre;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -30,6 +31,24 @@ public class EmpruntRepositoryJPA implements EmpruntRepository {
         em.close();
 
         return emprunt;
+    }
+
+    public Emprunt findEmpruntById(Long idEmprunt) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("tp2victoria");
+        EntityManager em = emf.createEntityManager();
+
+        em.getTransaction().begin();
+
+        final Query query = em.createNativeQuery("select emprunt from Emprunt where idEmprunt=?");
+        query.setParameter(1, idEmprunt);
+
+        List<Emprunt> resultatQuery = query.getResultList();
+        Emprunt empruntTrouve = resultatQuery.getFirst();
+
+        em.getTransaction().commit();
+        em.close();
+
+        return empruntTrouve;
     }
 
     /*public EmpruntDocument saveEmpruntDocumentLivre(EmpruntDocument empruntDocument) {
