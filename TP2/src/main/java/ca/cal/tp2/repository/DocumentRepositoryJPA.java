@@ -49,4 +49,17 @@ public class DocumentRepositoryJPA implements DocumentRepository {
 
         return livreTrouve;
     }
+
+    @Override
+    public void updateLivre(Livre livre) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("tp2victoria");
+        EntityManager em = emf.createEntityManager();
+
+        em.getTransaction().begin();
+
+        em.merge(livre);
+
+        em.getTransaction().commit();
+        em.close();
+    }
 }

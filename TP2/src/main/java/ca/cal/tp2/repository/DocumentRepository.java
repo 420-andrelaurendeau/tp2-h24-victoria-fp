@@ -7,4 +7,6 @@ public interface DocumentRepository {
     Livre saveLivre(String titre, String auteur, int nbPages);
 
     Livre findLivreByTitle(String titre);
+
+    void updateLivre(Livre livre);
 }
