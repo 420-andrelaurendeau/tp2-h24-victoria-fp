@@ -8,7 +8,7 @@ public interface DocumentRepository {
 
     void updateLivre(Livre livre);
 
-    Livre findLivreByTitle(String titre);
+    Livre findLivreByTitre(String titre);
 
     Livre findLivreByAuteur(String auteur);
 

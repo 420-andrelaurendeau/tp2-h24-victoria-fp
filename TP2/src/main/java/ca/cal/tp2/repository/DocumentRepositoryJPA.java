@@ -46,7 +46,7 @@ public class DocumentRepositoryJPA implements DocumentRepository {
 
 
     @Override
-    public Livre findLivreByTitle(String titre) {
+    public Livre findLivreByTitre(String titre) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("tp2victoria");
         EntityManager em = emf.createEntityManager();
 

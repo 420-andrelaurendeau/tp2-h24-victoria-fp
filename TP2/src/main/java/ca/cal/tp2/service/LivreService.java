@@ -21,6 +21,14 @@ public class LivreService {
         return toDTO(livre);
     }
 
+    public LivreDTO findLivreByTitre(String titre) {
+        if (titre == null || titre.isEmpty())
+            throw new NullPointerException("Le titre ne peuvent pas être null ou vide");
+
+        Livre livre = documentRepository.findLivreByTitre(titre);
+        return toDTO(livre);
+    }
+
     private LivreDTO toDTO(Livre livre) {
         LivreDTO livreDTO = new LivreDTO(
                 livre.getIdDocument(),
