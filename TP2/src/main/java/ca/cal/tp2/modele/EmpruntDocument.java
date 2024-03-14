@@ -16,6 +16,10 @@ public class EmpruntDocument {
     @JoinColumn(name = "idDocument")
     private Document document;
 
+    @ManyToOne
+    @JoinColumn(name = "idEmprunt")
+    private Emprunt emprunt;
+
     @Column
     private Date dateRetour;
 

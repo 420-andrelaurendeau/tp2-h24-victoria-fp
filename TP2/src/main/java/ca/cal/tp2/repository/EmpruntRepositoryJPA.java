@@ -31,4 +31,10 @@ public class EmpruntRepositoryJPA implements EmpruntRepository {
 
         return emprunt;
     }
+
+    /*public EmpruntDocument saveEmpruntDocumentLivre(EmpruntDocument empruntDocument) {
+
+    }*/
+
+
 }

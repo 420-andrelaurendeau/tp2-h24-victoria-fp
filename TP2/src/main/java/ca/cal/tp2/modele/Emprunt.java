@@ -1,6 +1,8 @@
 package ca.cal.tp2.modele;
 
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -12,8 +14,8 @@ public class Emprunt {
     @Column
     private Long idEmprunt;
 
-    @OneToMany
-    private List<EmpruntDocument> empruntDocuments;
+    @OneToMany(mappedBy = "emprunt", cascade = CascadeType.ALL)
+    private List<EmpruntDocument> empruntDocuments = new ArrayList<>();
 
     public Emprunt() {
 

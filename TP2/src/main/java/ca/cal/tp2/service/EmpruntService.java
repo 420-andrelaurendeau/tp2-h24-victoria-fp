@@ -22,6 +22,10 @@ public class EmpruntService {
         return toDTO(emprunt);
     }
 
+    /*public EmpruntDocumentDTO createEmpruntDocumentLivre() {
+
+    }*/
+
     private EmpruntDTO toDTO(Emprunt emprunt) {
         EmpruntDTO empruntDTO = new EmpruntDTO(
                 emprunt.getIdEmprunt(),
