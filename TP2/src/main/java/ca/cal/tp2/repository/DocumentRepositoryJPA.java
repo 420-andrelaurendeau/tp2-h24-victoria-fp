@@ -32,6 +32,19 @@ public class DocumentRepositoryJPA implements DocumentRepository {
     }
 
     @Override
+    public void updateLivre(Livre livre) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("tp2victoria");
+        EntityManager em = emf.createEntityManager();
+
+        em.getTransaction().begin();
+
+        em.merge(livre);
+
+        em.getTransaction().commit();
+        em.close();
+    }
+
+    @Override
     public Livre findLivreByTitle(String titre) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("tp2victoria");
         EntityManager em = emf.createEntityManager();
@@ -51,16 +64,22 @@ public class DocumentRepositoryJPA implements DocumentRepository {
     }
 
     @Override
-    public void updateLivre(Livre livre) {
+    public Livre findLivreByAuteur(String auteur) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("tp2victoria");
         EntityManager em = emf.createEntityManager();
 
         em.getTransaction().begin();
 
-        em.merge(livre);
+        final Query query = em.createNativeQuery("select livre from Document where auteur = ?");
+        query.setParameter(1, auteur);
+
+        List<Livre> resultatQuery = query.getResultList();
+        Livre livreTrouve = resultatQuery.getFirst();
 
         em.getTransaction().commit();
         em.close();
+
+        return livreTrouve;
     }
 
     @Override
