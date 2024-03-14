@@ -59,5 +59,13 @@ public class EmpruntService {
         return empruntDTO;
     }
 
-    // TODO: empruntDocumentToDTO()
+    private EmpruntDocumentDTO empruntDocumenToDTO(EmpruntDocument empruntDocument) {
+        EmpruntDocumentDTO empruntDocumentDTO = new EmpruntDocumentDTO(
+                empruntDocument.getIdEmpruntDocument(),
+                empruntDocument.getEmprunt(),
+                empruntDocument.getDocument(),
+                empruntDocument.getDateRetour()
+        );
+        return empruntDocumentDTO;
+    }
 }
