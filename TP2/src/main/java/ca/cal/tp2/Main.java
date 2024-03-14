@@ -27,7 +27,12 @@ public class Main {
 
         // Création d'un Livre et d'un Emprunt --------------------------------
         LivreService livreService = new LivreService(new DocumentRepositoryJPA());
-        LivreDTO livreDTO = livreService.createLivre("Le passager", "Patrick Sénécal", 214);
+        LivreDTO livreDTO = livreService.createLivre(
+                "Le passager",
+                "Patrick Sénécal",
+                50,
+                214
+        );
         // ----------------------------------------------------
 
         em.getTransaction().commit();

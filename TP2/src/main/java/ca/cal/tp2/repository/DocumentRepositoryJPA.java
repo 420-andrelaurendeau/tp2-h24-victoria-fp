@@ -13,16 +13,16 @@ public class DocumentRepositoryJPA implements DocumentRepository {
     public DocumentRepositoryJPA() {}
 
     @Override
-    public Livre saveLivre(String titre, String auteur, int nbPages) {
+    public Livre saveLivre(String titre, String auteur, int nbExemplairesRestants, int nbPages) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("tp2victoria");
         EntityManager em = emf.createEntityManager();
 
         em.getTransaction().begin();
 
-        final Query query = em.createNativeQuery("select titre, auteur, nbPages from Document where auteur=?");
+        final Query query = em.createNativeQuery("select * from Document where auteur=?");
         query.setParameter(1, titre);
 
-        Livre livre = new Livre(titre, auteur, nbPages);
+        Livre livre = new Livre(titre, auteur, nbExemplairesRestants, nbPages);
 
         em.persist(livre);
         em.getTransaction().commit();

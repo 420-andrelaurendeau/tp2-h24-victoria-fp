@@ -34,7 +34,7 @@ public class EmpruntService {
         if (empruntDTO == null || livreDTO == null)
             throw new NullPointerException("Les paramètres entrés ne peuvent pas être null");
 
-        int exemplairesRestants = documentRepository.nbExemplairesRestants(livreDTO.id());
+        int exemplairesRestants = documentRepository.getNbExemplairesRestants(livreDTO.idDocument());
 
         if (exemplairesRestants == 0)
             throw new NullPointerException("Aucun exemplaire restant pour " + livreDTO.titre());

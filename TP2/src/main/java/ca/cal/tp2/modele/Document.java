@@ -17,11 +17,15 @@ public abstract class Document {
     @Column
     private String auteur;
 
+    @Column
+    private int nbExemplairesRestants;
+
     public Document() {}
 
-    public Document(String titre, String auteur) {
+    public Document(String titre, String auteur, int nbExemplairesRestants) {
         this.titre = titre;
         this.auteur = auteur;
+        this.nbExemplairesRestants = nbExemplairesRestants;
     }
 
     public Long getIdDocument() {
@@ -34,5 +38,13 @@ public abstract class Document {
 
     public String getAuteur() {
         return this.auteur;
+    }
+
+    public int getNbExemplairesRestants() {
+        return this.nbExemplairesRestants;
+    }
+
+    public void setNbExemplairesRestants(int nbExemplairesRestants) {
+        this.nbExemplairesRestants = nbExemplairesRestants;
     }
 }
