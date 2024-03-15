@@ -106,9 +106,11 @@ public class Main {
 
         // Recherche d'un livre selon son auteur ------------------
         LivreDTO livreRechercheParAuteur = livreService.findLivreByAuteur("Auteur Quelconque");
-        System.out.println("ID du livre dont l'auteur est Auteur Quelconque : " + livreRechercheParAuteur.idDocument());
+        System.out.println("ID du livre dont l'auteur est 'Auteur Quelconque' : " + livreRechercheParAuteur.idDocument());
         System.out.println("---------------------------------");
         // -------------------------------------------------------
+
+
 
         em.getTransaction().commit();
         em.close();
