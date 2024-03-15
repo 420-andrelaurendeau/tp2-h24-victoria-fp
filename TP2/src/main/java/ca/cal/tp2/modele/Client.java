@@ -2,7 +2,6 @@ package ca.cal.tp2.modele;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -31,13 +30,5 @@ public class Client extends Utilisateur {
     @Override
     public String getPrenom() {
         return super.getPrenom();
-    }
-
-    public List<Emprunt> getEmprunts() {
-        return emprunts;
-    }
-
-    public void setEmprunts(List<Emprunt> emprunts) {
-        this.emprunts = emprunts;
     }
 }

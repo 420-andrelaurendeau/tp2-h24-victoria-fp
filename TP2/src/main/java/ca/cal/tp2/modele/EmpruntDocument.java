@@ -3,7 +3,6 @@ package ca.cal.tp2.modele;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @Embeddable
@@ -37,31 +36,16 @@ public class EmpruntDocument {
         return idEmpruntDocument;
     }
 
-    public void setIdEmpruntDocument(Long idEmpruntDocument) {
-        this.idEmpruntDocument = idEmpruntDocument;
-    }
-
     public Emprunt getEmprunt() {
         return emprunt;
-    }
-
-    public void setEmprunt(Emprunt emprunt) {
-        this.emprunt = emprunt;
     }
 
     public Document getDocument() {
         return this.document;
     }
 
-    public void setDocument(Document document) {
-        this.document = document;
-    }
-
     public LocalDate getDateRetour() {
         return dateRetour;
     }
 
-    public void setDateRetour(LocalDate dateRetour) {
-        this.dateRetour = dateRetour;
-    }
 }

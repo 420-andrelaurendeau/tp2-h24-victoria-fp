@@ -3,8 +3,6 @@ package ca.cal.tp2.modele;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Embeddable

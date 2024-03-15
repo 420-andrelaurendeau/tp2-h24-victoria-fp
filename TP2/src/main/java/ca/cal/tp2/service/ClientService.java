@@ -22,7 +22,6 @@ public class ClientService {
 
     private ClientDTO toDTO(Client client) {
         ClientDTO clientDTO = new ClientDTO(
-                //client.getIdClient(),
                 client.getIdUser(),
                 client.getNom(),
                 client.getPrenom()

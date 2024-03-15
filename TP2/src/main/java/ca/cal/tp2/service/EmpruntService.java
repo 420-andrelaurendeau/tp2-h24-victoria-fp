@@ -7,7 +7,6 @@ import ca.cal.tp2.modele.Livre;
 import ca.cal.tp2.repository.DocumentRepository;
 import ca.cal.tp2.repository.EmpruntRepository;
 import ca.cal.tp2.repository.UtilisateurRepository;
-import ca.cal.tp2.repository.UtilisateurRepositoryJPA;
 
 import java.time.LocalDate;
 import java.util.List;
