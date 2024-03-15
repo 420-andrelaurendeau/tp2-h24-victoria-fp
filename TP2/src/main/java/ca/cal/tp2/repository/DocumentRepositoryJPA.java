@@ -68,8 +68,9 @@ public class DocumentRepositoryJPA implements DocumentRepository {
 
         em.getTransaction().begin();
 
-        final Query query = em.createNativeQuery("select livre from Document where auteur = ?");
-        query.setParameter(1, auteur);
+        String queryString = "SELECT l FROM Document l WHERE l.auteur = :auteur";
+        Query query = em.createQuery(queryString);
+        query.setParameter("auteur", auteur);
 
         List<Livre> resultatQuery = query.getResultList();
         Livre livreTrouve = resultatQuery.getFirst();
@@ -87,8 +88,9 @@ public class DocumentRepositoryJPA implements DocumentRepository {
 
         em.getTransaction().begin();
 
-        final Query query = em.createNativeQuery("select livre from Document where categorie = ?");
-        query.setParameter(1, categorie);
+        String queryString = "SELECT l FROM Document l WHERE l.categorie = :categorie";
+        Query query = em.createQuery(queryString);
+        query.setParameter("categorie", categorie);
 
         List<Livre> resultatQuery = query.getResultList();
         Livre livreTrouve = resultatQuery.getFirst();
@@ -106,8 +108,9 @@ public class DocumentRepositoryJPA implements DocumentRepository {
 
         em.getTransaction().begin();
 
-        final Query query = em.createNativeQuery("select livre from Document where annee = ?");
-        query.setParameter(1, annee);
+        String queryString = "SELECT l FROM Document l WHERE l.annee = :annee";
+        Query query = em.createQuery(queryString);
+        query.setParameter("annee", annee);
 
         List<Livre> resultatQuery = query.getResultList();
         Livre livreTrouve = resultatQuery.getFirst();
