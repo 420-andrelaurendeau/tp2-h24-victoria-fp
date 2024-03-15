@@ -15,8 +15,9 @@ public class Emprunt {
     @Column
     private Long idEmprunt;
 
-    @OneToMany(mappedBy = "emprunt", cascade = CascadeType.ALL)
-    private List<EmpruntDocument> empruntDocuments = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "idUser")
+    private Client client;
 
     @Column
     private LocalDate dateEmprunt;
@@ -25,32 +26,20 @@ public class Emprunt {
 
     }
 
-    public Emprunt(List<EmpruntDocument> empruntDocuments, LocalDate dateEmprunt) {
-        this.empruntDocuments = empruntDocuments;
+    public Emprunt(Client client, LocalDate dateEmprunt) {
+        this.client = client;
         this.dateEmprunt = dateEmprunt;
-    }
-
-    public void setIdEmprunt(Long idEmprunt) {
-        this.idEmprunt = idEmprunt;
     }
 
     public Long getIdEmprunt() {
         return idEmprunt;
     }
 
-    public List<EmpruntDocument> getEmpruntDocuments() {
-        return empruntDocuments;
-    }
-
-    public void setEmpruntDocuments(List<EmpruntDocument> empruntDocuments) {
-        this.empruntDocuments = empruntDocuments;
-    }
-
     public LocalDate getDateEmprunt() {
         return dateEmprunt;
     }
 
-    public void setDateEmprunt(LocalDate dateEmprunt) {
-        this.dateEmprunt = dateEmprunt;
+    public Client getClient() {
+        return client;
     }
 }

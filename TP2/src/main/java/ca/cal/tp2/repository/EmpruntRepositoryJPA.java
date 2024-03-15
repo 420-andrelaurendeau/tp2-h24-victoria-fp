@@ -1,28 +1,27 @@
 package ca.cal.tp2.repository;
 
+import ca.cal.tp2.modele.Client;
 import ca.cal.tp2.modele.Document;
 import ca.cal.tp2.modele.Emprunt;
 import ca.cal.tp2.modele.EmpruntDocument;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
-import jakarta.persistence.Query;
 
 import java.time.LocalDate;
-import java.util.List;
 
 public class EmpruntRepositoryJPA implements EmpruntRepository {
 
     public EmpruntRepositoryJPA() {}
 
     @Override
-    public Emprunt saveEmprunt(List<EmpruntDocument> empruntDocuments, LocalDate dateEmprunt) {
+    public Emprunt saveEmprunt(Client client, LocalDate dateEmprunt) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("tp2victoria");
         EntityManager em = emf.createEntityManager();
 
         em.getTransaction().begin();
 
-        Emprunt emprunt = new Emprunt(empruntDocuments, dateEmprunt);
+        Emprunt emprunt = new Emprunt(client, dateEmprunt);
         em.persist(emprunt);
 
         em.getTransaction().commit();
@@ -37,11 +36,7 @@ public class EmpruntRepositoryJPA implements EmpruntRepository {
 
         em.getTransaction().begin();
 
-        final Query query = em.createNativeQuery("select emprunt from Emprunt where idEmprunt=?");
-        query.setParameter(1, idEmprunt);
-
-        List<Emprunt> resultatQuery = query.getResultList();
-        Emprunt empruntTrouve = resultatQuery.getFirst();
+        Emprunt empruntTrouve = em.find(Emprunt.class, idEmprunt);
 
         em.getTransaction().commit();
         em.close();

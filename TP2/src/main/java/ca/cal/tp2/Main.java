@@ -1,16 +1,16 @@
 package ca.cal.tp2;
 
 import ca.cal.tp2.repository.DocumentRepositoryJPA;
+import ca.cal.tp2.repository.EmpruntRepositoryJPA;
 import ca.cal.tp2.repository.UtilisateurRepositoryJPA;
-import ca.cal.tp2.service.ClientDTO;
-import ca.cal.tp2.service.ClientService;
-import ca.cal.tp2.service.LivreDTO;
-import ca.cal.tp2.service.LivreService;
+import ca.cal.tp2.service.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) throws SQLException, InterruptedException {
@@ -67,6 +67,24 @@ public class Main {
         System.out.println("Nombre de pages : " + livre2.nbPages());
         System.out.println("---------------------------------");
         // ----------------------------------------------------
+
+
+        // Création d'un Emprunt de Livre qui a plusieurs exemplaires -----------------------------
+        EmpruntService empruntService = new EmpruntService(
+                new EmpruntRepositoryJPA(), new DocumentRepositoryJPA(), new UtilisateurRepositoryJPA()
+        );
+
+        LocalDate dateEmprunt1 = LocalDate.of(2024, 03, 10);
+        EmpruntDTO emprunt1 = empruntService.createEmprunt(client1, dateEmprunt1);
+        EmpruntDocumentDTO empruntDocument1 = empruntService.createEmpruntDocumentLivre(emprunt1, livre1);
+
+        System.out.println("empruntDocument1");
+        System.out.println("Date de l'emprunt : " + emprunt1.dateEmprunt());
+        System.out.println("Client qui a fait l'emprunt : " + emprunt1.client().getPrenom());
+        System.out.println("Document emprunté : " + empruntDocument1.document());
+        System.out.println("Date limite de retour : " + empruntDocument1.dateRetour());
+        System.out.println("---------------------------------");
+        // ----------------------------------------------------------------------------------------
 
 
         em.getTransaction().commit();

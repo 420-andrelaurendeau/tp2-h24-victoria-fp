@@ -43,22 +43,22 @@ public class DocumentRepositoryJPA implements DocumentRepository {
 
 
     @Override
-    public Livre findLivreByTitre(String titre) {
+    public List<Livre> findLivreByTitre(String titre) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("tp2victoria");
         EntityManager em = emf.createEntityManager();
 
         em.getTransaction().begin();
 
-        final Query query = em.createNativeQuery("select livre from Document where titre like ?");
-        query.setParameter(1, titre);
+        String queryString = "SELECT l FROM Document l WHERE l.titre like :titre";
+        Query query = em.createQuery(queryString);
+        query.setParameter("titre", titre);
 
-        List<Livre> resultatQuery = query.getResultList();
-        Livre livreTrouve = resultatQuery.getFirst();
+        List<Livre> livresTrouves = query.getResultList();
 
         em.getTransaction().commit();
         em.close();
 
-        return livreTrouve;
+        return livresTrouves;
     }
 
     @Override

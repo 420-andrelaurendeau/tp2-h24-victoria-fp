@@ -3,6 +3,8 @@ package ca.cal.tp2.service;
 import ca.cal.tp2.modele.Livre;
 import ca.cal.tp2.repository.DocumentRepository;
 
+import java.util.List;
+
 public class LivreService {
 
     private final DocumentRepository documentRepository;
@@ -25,7 +27,8 @@ public class LivreService {
         if (titre == null || titre.isEmpty())
             throw new NullPointerException("Le titre ne peut pas être null ni vide");
 
-        Livre livre = documentRepository.findLivreByTitre(titre);
+        List<Livre> listeLivres = documentRepository.findLivreByTitre(titre);
+        Livre livre = listeLivres.getFirst();
         return toDTO(livre);
     }
 
