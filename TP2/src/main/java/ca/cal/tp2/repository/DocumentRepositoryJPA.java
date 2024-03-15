@@ -49,9 +49,9 @@ public class DocumentRepositoryJPA implements DocumentRepository {
 
         em.getTransaction().begin();
 
-        String queryString = "SELECT l FROM Document l WHERE l.titre like :titre";
+        String queryString = "SELECT l FROM Document l WHERE l.titre LIKE :stringRecherche";
         Query query = em.createQuery(queryString);
-        query.setParameter("titre", titre);
+        query.setParameter("stringRecherche", "%" + titre + "%");
 
         List<Livre> livresTrouves = query.getResultList();
 

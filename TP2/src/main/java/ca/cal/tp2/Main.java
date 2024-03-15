@@ -93,8 +93,16 @@ public class Main {
             EmpruntDocumentDTO empruntDocument2 = empruntService.createEmpruntDocumentLivre(emprunt2, livre2);
         } catch (NullPointerException e) {
             System.out.println("Test échoué");
+            System.out.println("---------------------------------");
         }
         // ----------------------------------------------------------------------------------------
+
+
+        // Recherche d'un livre selon son titre ------------------
+        LivreDTO livreRechercheParTitre = livreService.findLivreByTitre("passager");
+        System.out.println("ID du livre dont le titre contient 'passager' : " + livreRechercheParTitre.idDocument());
+        System.out.println("---------------------------------");
+        // -------------------------------------------------------
 
         em.getTransaction().commit();
         em.close();
