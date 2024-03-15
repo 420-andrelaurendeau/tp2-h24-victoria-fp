@@ -86,6 +86,15 @@ public class Main {
         System.out.println("---------------------------------");
         // ----------------------------------------------------------------------------------------
 
+        // Essai d'emprunt de document qui n'a plus d'exemplaires (doit échouer) ------------------
+        try {
+            LocalDate dateEmprunt2 = LocalDate.of(2022, 02, 2);
+            EmpruntDTO emprunt2 = empruntService.createEmprunt(client1, dateEmprunt2);
+            EmpruntDocumentDTO empruntDocument2 = empruntService.createEmpruntDocumentLivre(emprunt2, livre2);
+        } catch (NullPointerException e) {
+            System.out.println("Test échoué");
+        }
+        // ----------------------------------------------------------------------------------------
 
         em.getTransaction().commit();
         em.close();
